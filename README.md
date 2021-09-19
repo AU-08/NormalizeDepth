@@ -3,30 +3,30 @@
 
 1. Download ZIPからフォルダをダウンロードします。
 
-2. ZIPファイルを解凍し以下の通りに配置します
-    * pythonファイル
-`C:\Users\.nuke\gizmos`  
+2. ZIPファイルを解凍し以下の通りに配置します。   
+`C: > Users > .nuke > gizmos > NormalizeDepth.gizmo`  
+`C: > Users > .nuke > gizmos > NormalizeDepth_logo.png`
 
-    * pngファイル (シェルフに登録する場合使用して下さい)  
-`ドキュメント > maya > 使用するmayaのバージョン > prefs > icons`
-
-3. Mayaを再起動します。
-
-4. 以下のコマンドを実行します。  
+3. init.pyに以下のコマンドを追加する。  
 ```py
-import ezCreateMaterial
-ezCreateMaterial.run()
+nuke.pluginAddPath('./gizmos')
 ```
 
+4. menu.pyに以下のコマンドを追加する。
+```py
+nuke.menu('Nodes').addCommand('NormalizeDepth', "nuke.createNode( 'NormalizeDepth.gizmo')", icon ='NormalizeDepth_logo.png')
+```
+
+5. Nukeを再起動し、ツールバーにアイコンが表示されていればOK。
 
 
 使用方法
 ==========================
 
-1. 使用したいテクスチャマップのチェックボックスにチェックを入れます。  
-( デフォルトでは全てオンになっています。 )
+1. Depthチャンネルを含んだノードにNormalizeDepthを接続する。  
 
-2. 使用したいテクスチャマップごとに、フォルダのアイコンをクリックして画像ファイルを選択するか、
-テキストフィールドに直接ファイルのパスを入力してください。  
+2. ROIが画像サイズと合っていなければ、"Reset"を押して調整する。 
 
-3. "Create Material"をクリックしてマテリアルを作成します。
+3. "start"を押すとポップアップメニューが表示されるので、フレームレンジを設定しOKを押すとシーンの解析が始まる。
+
+4. "gamma"で後から微調整が可能。
