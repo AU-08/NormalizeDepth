@@ -1,0 +1,71 @@
+#! C:/Program Files/Nuke12.1v4/nuke-12.1.4.dll -nx
+version 12.1 v4
+Gizmo {
+ tile_color 0x8e68ffff
+ addUserKnob {20 User l Setting}
+ addUserKnob {41 ROI T CurveTool1.ROI}
+ addUserKnob {41 resetROI l Reset -STARTLINE T CurveTool1.resetROI}
+ addUserKnob {41 go l start T CurveTool1.go}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 gamma T Grade2.gamma}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 70
+  ypos -297
+ }
+ Dot {
+  name Dot31
+  label IN
+  note_font "Verdana Bold"
+  xpos 104
+  ypos -246
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  in1 depth
+  fromInput2 {{0} B}
+  mappings "4 depth.Z 0 0 rgba.red 0 0 depth.Z 0 0 rgba.green 0 1 depth.Z 0 0 rgba.blue 0 2 depth.Z 0 0 rgba.alpha 0 3"
+  name Shuffle15
+  xpos 70
+  ypos -129
+ }
+ CurveTool {
+  operation "Max Luma Pixel"
+  ROI {0 0 1920 1080}
+  autocropdata {480 270 1440 810}
+  intensitydata {{curve}}
+  maxlumapixdata {{curve} {curve}}
+  maxlumapixvalue {{curve}}
+  minlumapixdata {{curve} {curve}}
+  minlumapixvalue {{curve}}
+  name CurveTool1
+  xpos 70
+  ypos -81
+ }
+ Grade {
+  blackpoint {{parent.CurveTool1.minlumapixvalue}}
+  whitepoint {{parent.CurveTool1.maxlumapixvalue}}
+  name Grade1
+  xpos 70
+  ypos -33
+ }
+ Grade {
+  name Grade2
+  xpos 70
+  ypos 15
+ }
+ Dot {
+  name Dot1
+  label OUT
+  note_font "Verdana Bold"
+  xpos 104
+  ypos 138
+ }
+ Output {
+  name Output1
+  xpos 70
+  ypos 231
+ }
+end_group
