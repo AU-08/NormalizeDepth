@@ -1,4 +1,4 @@
-# NormalizeDepth
+# Normalize Depth Gizmo
 
 Depthチャンネルを自動でノーマライズするギズモです。
 
