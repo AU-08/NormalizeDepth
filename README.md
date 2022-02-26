@@ -1,9 +1,8 @@
-NormalizeDepth
-==========================
+# NormalizeDepth
+
 Depthチャンネルを自動でノーマライズするギズモです。
 
-インストールの方法
-==========================
+## インストールの方法
 
 1. Download ZIPからフォルダをダウンロードします。
 
@@ -24,13 +23,10 @@ nuke.menu('Nodes').addCommand('NormalizeDepth', "nuke.createNode( 'NormalizeDept
 5. Nukeを再起動し、ツールバーにアイコンが表示されていればOK。
 
 
-使用方法
-==========================
+## 使用方法
 
 1. Depthチャンネルを含んだノードにNormalizeDepthを接続する。  
 
 2. ROIが画像サイズと合っていなければ、"Reset"を押して調整する。 
 
 3. "start"を押すとポップアップメニューが表示されるので、フレームレンジを設定しOKを押すとシーンの解析が始まる。
-
-4. "gamma"で後から微調整が可能。
